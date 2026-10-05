@@ -1,4 +1,4 @@
-# RetaLab Skill
+# Retalab Skill
 
 > Define design systems, review interfaces, and turn UX principles into implementation-ready fixes—without imposing one visual style.
 
@@ -118,4 +118,16 @@ Apache-2.0. See [`LICENSE.txt`](./LICENSE.txt).
 
 ## Credits
 
+<<<<<<< HEAD
 Adapted from [oil-oil/ui-ux-guide](https://github.com/oil-oil/ui-ux-guide).
+=======
+Pure text rules and HTML preview template, no standalone accounts or API keys; requires reading the target project, preview capability is optional.
+
+UX universal constraints and style-specific preferences are maintained separately; read the project first, then ask for missing information; never use one style's preferences to negate another.
+
+Usage example:
+
+```text
+Review the current project's design system, reuse existing tokens first.
+```
+>>>>>>> origin/master
