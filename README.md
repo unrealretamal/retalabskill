@@ -116,6 +116,3 @@ The family informs typography, color, shape, spacing, and motion. Its taste-spec
 
 Apache-2.0. See [`LICENSE.txt`](./LICENSE.txt).
 
-## Credits
-
-Adapted from [oil-oil/ui-ux-guide](https://github.com/oil-oil/ui-ux-guide).
