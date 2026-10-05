@@ -1,0 +1,1927 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RetaLab Skill — UI/UX Design System & Review</title>
+    <meta
+      name="description"
+      content="RetaLab Skill: Turn UI/UX reviews into actionable interface improvements."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f8fb;
+        --panel: #ffffff;
+        --panel-2: #f3f5f8;
+        --text: #111111;
+        --muted: #5f6673;
+        --line: #e2e7ee;
+        --line-strong: #d2dae6;
+        --shadow: 0 18px 38px rgba(9, 30, 66, 0.08);
+        --s1: 4px;
+        --s2: 8px;
+        --s3: 12px;
+        --s4: 16px;
+        --s5: 24px;
+        --s6: 32px;
+        --s7: 40px;
+        --s8: 48px;
+        --s9: 64px;
+
+        --r1: 10px;
+        --r2: 12px;
+        --r3: 14px;
+        --r4: 18px;
+        --r5: 24px;
+
+        --radius: var(--r4);
+        --radius-sm: var(--r2);
+        --maxw: 1180px;
+
+        --accent: #1c56d8;
+        --accent-soft: #eaf0ff;
+        --good: #1f7a45;
+        --good-soft: #e9f7ef;
+        --warn: #8c5a00;
+        --warn-soft: #fff4dd;
+        --bad: #b43b3b;
+        --bad-soft: #fff1f1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+        background: radial-gradient(circle at 10% -15%, #ffffff 0%, var(--bg) 60%);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(calc(100% - 3rem), var(--maxw));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        padding: var(--s6) 0 var(--s5);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--s3);
+      }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        gap: var(--s3);
+      }
+
+      .brand .name {
+        font-size: 13px;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .brand .mode {
+        font-size: 12px;
+        color: #2a3f6e;
+        background: var(--accent-soft);
+        border: 1px solid #dbe6ff;
+        padding: var(--s1) var(--s3);
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      .repo {
+        text-decoration: none;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        padding: var(--s2) var(--s4);
+        font-size: 13px;
+        background: #fff;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .repo:hover {
+        transform: translateY(-1px);
+        border-color: #bac3d0;
+      }
+
+      .hero {
+        border: 1px solid var(--line);
+        background: linear-gradient(165deg, #ffffff, #f9fbff 72%);
+        border-radius: var(--r5);
+        box-shadow: var(--shadow);
+        padding: var(--s7);
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        line-height: 1.15;
+      }
+
+      h1 {
+        font-family: "Newsreader", serif;
+        font-size: clamp(2rem, 3.9vw, 3.35rem);
+        letter-spacing: 0.01em;
+      }
+
+      .hero p {
+        margin: var(--s3) 0 0;
+        color: #39414d;
+        max-width: 78ch;
+      }
+
+      .hero-row {
+        margin-top: var(--s5);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--s4);
+      }
+
+      .quick {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        padding: var(--s5);
+      }
+
+      .quick h2 {
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .quick p {
+        margin: var(--s2) 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .prompt-grid {
+        margin-top: var(--s4);
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--s3);
+      }
+
+      .prompt {
+        border: 1px solid #dbe6ff;
+        background: #f5f9ff;
+        border-radius: var(--r3);
+        padding: var(--s3);
+      }
+
+      .prompt .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s2);
+        font-size: 12px;
+        font-weight: 700;
+        color: #1d3564;
+        margin-bottom: var(--s1);
+      }
+
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      pre {
+        margin: 0;
+        border: 0;
+        background: transparent;
+        color: #1f3154;
+        font-size: 12px;
+        line-height: 1.45;
+        white-space: pre-wrap;
+      }
+
+      .outcomes {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        padding: var(--s5);
+      }
+
+      .outcomes h2 {
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .bullets {
+        margin: var(--s3) 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .bullets li {
+        border-top: 1px solid var(--line);
+        padding: var(--s3) 0;
+        color: #3f4650;
+        font-size: 13px;
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: var(--s3);
+      }
+
+      .bullets li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .pill {
+        font-size: 12px;
+        font-weight: 700;
+        border-radius: 999px;
+        padding: var(--s1) var(--s2);
+        width: fit-content;
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+        color: #2f3640;
+      }
+
+      .hero-metrics {
+        margin-top: var(--s5);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--s3);
+      }
+
+      .hero-metrics .item {
+        border: 1px solid var(--line);
+        border-radius: var(--r2);
+        background: #fff;
+        padding: var(--s3) var(--s4);
+        font-size: 13px;
+        color: #3b4350;
+      }
+
+      main section + section {
+        margin-top: var(--s8);
+      }
+
+      .section-head {
+        margin: 0 0 var(--s4);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--s2);
+      }
+
+      .section-head h2 {
+        font-family: "Newsreader", serif;
+        font-size: clamp(1.45rem, 2.5vw, 2.05rem);
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        max-width: 66ch;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--s4);
+      }
+
+      .demo {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--panel);
+        overflow: hidden;
+      }
+
+      .demo-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--s3) var(--s4);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .demo-top .title {
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      .seg {
+        display: inline-flex;
+        gap: 0;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .seg button {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        padding: var(--s2) var(--s3);
+        font-size: 12px;
+        color: #3f4650;
+        cursor: pointer;
+      }
+
+      .seg button[aria-pressed="true"] {
+        background: #111111;
+        color: #ffffff;
+      }
+
+      .demo-body {
+        padding: var(--s5);
+        background: linear-gradient(180deg, #fff, #fbfcfe);
+      }
+
+      .mock {
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: #fff;
+        padding: var(--s4);
+      }
+
+      .mock + .mock {
+        margin-top: var(--s3);
+      }
+
+      .mock-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        margin-bottom: var(--s3);
+      }
+
+      .state {
+        font-size: 12px;
+        color: #7a828f;
+      }
+
+      .mode-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .mode-toggle button {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        padding: var(--s2) var(--s3);
+        font-size: 12px;
+        color: #3f4650;
+        cursor: pointer;
+      }
+
+      .mode-toggle button[aria-pressed="true"] {
+        background: #111111;
+        color: #ffffff;
+      }
+
+      .row {
+        margin-top: var(--s2);
+      }
+
+      .label {
+        font-size: 12px;
+        color: #3f4650;
+        margin-bottom: var(--s1);
+      }
+
+      .control {
+        border: 1px solid var(--line-strong);
+        border-radius: var(--r1);
+        padding: var(--s2) var(--s3);
+        font-size: 13px;
+      }
+
+      .help {
+        margin-top: var(--s1);
+        font-size: 11px;
+        color: #717b8a;
+      }
+
+      .help.warn {
+        color: #7c4e00;
+        background: var(--warn-soft);
+        border: 1px solid #efd8a9;
+        border-radius: var(--r2);
+        padding: var(--s1) var(--s2);
+      }
+
+      .cta {
+        display: flex;
+        gap: var(--s2);
+        margin-top: var(--s3);
+      }
+
+      .btn {
+        border: 1px solid var(--line-strong);
+        background: #fff;
+        border-radius: var(--r1);
+        padding: var(--s2) var(--s3);
+        font-size: 12px;
+      }
+
+      .btn.primary {
+        background: #111111;
+        color: #ffffff;
+        border-color: #111111;
+      }
+
+      .btn.link {
+        border: 0;
+        padding: var(--s2) var(--s1);
+        color: #4c5563;
+      }
+
+      .chips {
+        margin-top: var(--s2);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--s2);
+      }
+
+      .chip {
+        font-size: 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: var(--s1) var(--s2);
+        background: #fff;
+      }
+
+      .feedback {
+        margin-top: var(--s3);
+        border-radius: var(--r1);
+        border: 1px solid #cfe3d7;
+        background: #f1fbf5;
+        color: #245b39;
+        font-size: 12px;
+        padding: var(--s2) var(--s3);
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--s2);
+      }
+
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: var(--r1);
+        background: #fff;
+        padding: var(--s2);
+        font-size: 11px;
+      }
+
+      .metric b {
+        display: block;
+        font-size: 16px;
+        margin-top: var(--s1);
+      }
+
+      .metric.primary {
+        border-color: #cfe0ff;
+        background: #f5f8ff;
+      }
+
+      .metric.risk {
+        border-color: #efd8a9;
+        background: var(--warn-soft);
+      }
+
+      .table {
+        margin-top: var(--s2);
+        border: 1px solid var(--line);
+        border-radius: var(--r2);
+        overflow: hidden;
+      }
+
+      .tr {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--s2);
+        padding: var(--s2) var(--s3);
+        font-size: 12px;
+        border-top: 1px solid var(--line);
+      }
+
+      .tr:first-child {
+        border-top: 0;
+      }
+
+      .notes {
+        padding: var(--s4) var(--s5);
+        border-top: 1px solid var(--line);
+        background: #fbfcff;
+        font-size: 12px;
+        color: #4a5260;
+      }
+
+      .notes b {
+        color: #23478d;
+      }
+
+      .show {
+        display: block;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .review {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--s4);
+      }
+
+      .review-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .review-card .head {
+        padding: var(--s3) var(--s4);
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .review-card .body {
+        padding: var(--s5);
+      }
+
+      .prio {
+        display: grid;
+        gap: var(--s2);
+      }
+
+      .prio .item {
+        border: 1px solid var(--line);
+        border-radius: var(--r2);
+        padding: var(--s3);
+        background: #fff;
+      }
+
+      .prio .item .k {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s2);
+        font-weight: 800;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+      }
+
+      .k .mark {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+      }
+
+      .k.p0 .mark {
+        background: var(--bad);
+      }
+
+      .k.p1 .mark {
+        background: var(--warn);
+      }
+
+      .k.p2 .mark {
+        background: #6b7280;
+      }
+
+      .prio .item p {
+        margin: var(--s2) 0 0;
+        color: #424a56;
+        font-size: 13px;
+      }
+
+      .small {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: var(--s2);
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--s4);
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .card .head {
+        padding: var(--s3) var(--s4);
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .card .body {
+        padding: var(--s5);
+      }
+
+      .psych-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: var(--s4);
+      }
+
+      .toolbox {
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: #fff;
+        padding: var(--s4);
+      }
+
+      .toolbox .group-title {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        color: #3f4650;
+        text-transform: uppercase;
+        margin: 0 0 var(--s2);
+      }
+
+      .toolbox .group-title.sub {
+        margin-top: var(--s3);
+      }
+
+      .toggle-list {
+        display: grid;
+        gap: var(--s2);
+      }
+
+      .inline-actions {
+        display: flex;
+        gap: var(--s2);
+        margin-top: var(--s3);
+      }
+
+      .toggle {
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        gap: var(--s3);
+        align-items: start;
+        padding: var(--s2) var(--s3);
+        border-radius: var(--r2);
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .toggle input {
+        margin: 2px 0 0;
+        accent-color: var(--accent);
+      }
+
+      .toggle b {
+        display: block;
+        font-size: 13px;
+      }
+
+      .toggle span {
+        display: block;
+        margin-top: var(--s1);
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .stage {
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: linear-gradient(180deg, #fff, #fbfcfe);
+        padding: var(--s4);
+      }
+
+      .annotated {
+        position: relative;
+      }
+
+      .pin {
+        position: absolute;
+        left: calc(var(--x) * 1%);
+        top: calc(var(--y) * 1%);
+        transform: translate(-50%, -50%);
+        width: min(360px, calc(100vw - 56px));
+        display: none;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .pin::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px rgba(28, 86, 216, 0.14);
+        display: block;
+      }
+
+      .pin .label {
+        position: absolute;
+        left: var(--s3);
+        top: calc(-1 * var(--s2));
+        background: #111111;
+        color: #fff;
+        border-radius: var(--r1);
+        padding: var(--s2) var(--s3);
+        font-size: 12px;
+        width: calc(100% - var(--s3));
+        max-width: none;
+        line-height: 1.35;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+        white-space: normal;
+        word-break: break-word;
+      }
+
+      .pin .label i {
+        font-style: normal;
+        opacity: 0.82;
+      }
+
+      .anno-affordance [data-anno="affordance"],
+      .anno-signifiers [data-anno="signifiers"],
+      .anno-mapping [data-anno="mapping"],
+      .anno-constraints [data-anno="constraints"],
+      .anno-feedback [data-anno="feedback"],
+      .anno-exec [data-anno="exec"],
+      .anno-eval [data-anno="eval"],
+      .anno-model [data-anno="model"],
+      .anno-knowledge [data-anno="knowledge"],
+      .anno-modes [data-anno="modes"] {
+        display: block;
+      }
+
+      .anno-affordance .a-cta,
+      .anno-signifiers .a-signifier,
+      .anno-mapping .a-mapping,
+      .anno-constraints .a-constraint,
+      .anno-feedback .a-feedback,
+      .anno-modes .a-mode {
+        outline: 2px solid rgba(28, 86, 216, 0.4);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      .anno-exec .a-exec {
+        outline: 2px solid rgba(180, 59, 59, 0.45);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      .anno-eval .a-eval {
+        outline: 2px solid rgba(140, 90, 0, 0.45);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      .anno-exec .a-cta {
+        outline: 2px solid rgba(180, 59, 59, 0.45);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      .anno-eval .a-feedback {
+        outline: 2px solid rgba(140, 90, 0, 0.45);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      .anno-model .a-model {
+        outline: 2px solid rgba(31, 122, 69, 0.38);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      .anno-knowledge .a-knowledge {
+        outline: 2px solid rgba(31, 122, 69, 0.38);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
+      .micro-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--s4);
+      }
+
+      .micro {
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: #fff;
+        padding: var(--s4);
+      }
+
+      .micro .k {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s2);
+        font-weight: 900;
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: var(--s2);
+      }
+
+      .micro .k .mark {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+      }
+
+      .micro .k.slip .mark {
+        background: var(--warn);
+      }
+
+      .micro .k.mistake .mark {
+        background: var(--bad);
+      }
+
+      .micro p {
+        margin: 0 0 var(--s3);
+        color: #424a56;
+        font-size: 13px;
+      }
+
+      .toast {
+        margin-top: var(--s2);
+        border: 1px solid #cfe3d7;
+        background: #f1fbf5;
+        color: #245b39;
+        border-radius: var(--r1);
+        font-size: 12px;
+        padding: var(--s2) var(--s3);
+      }
+
+      .danger {
+        border: 1px solid #f2d2d2;
+        background: var(--bad-soft);
+        color: #7b2a2a;
+        border-radius: var(--r1);
+        font-size: 12px;
+        padding: var(--s2) var(--s3);
+      }
+
+      .icon-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--s4);
+      }
+
+      .icon-bar {
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: #fff;
+        padding: var(--s4);
+        display: flex;
+        gap: var(--s3);
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .mt-s2 {
+        margin-top: var(--s2);
+      }
+
+      .icon-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s2);
+        border: 1px solid var(--line-strong);
+        background: #fff;
+        border-radius: 999px;
+        padding: var(--s2) var(--s3);
+        font-size: 12px;
+        color: #2f3640;
+      }
+
+      .ico {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .icon-btn.icon-only span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .motion-demo {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        padding: var(--s5);
+      }
+
+      .motion-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--s3);
+        margin-bottom: var(--s3);
+      }
+
+      .motion-title {
+        font-weight: 800;
+        font-size: 13px;
+      }
+
+      .motion-stage {
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: #fff;
+        padding: var(--s4);
+        position: relative;
+        overflow: hidden;
+        min-height: 180px;
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(17, 17, 17, 0.2);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 180ms ease;
+      }
+
+      .panel {
+        position: absolute;
+        right: var(--s3);
+        top: var(--s3);
+        bottom: var(--s3);
+        width: min(320px, 92%);
+        background: #fff;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--r3);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition: opacity 220ms ease, transform 220ms ease;
+        padding: var(--s3);
+      }
+
+      .panel h3 {
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: var(--s2);
+      }
+
+      .panel p {
+        margin: 0;
+        color: #4a5260;
+        font-size: 12px;
+      }
+
+      .mock.mock-reset {
+        margin: 0;
+        position: relative;
+      }
+
+      .panel-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: var(--s3);
+      }
+
+      .motion-stage[data-open="true"] .overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .motion-stage[data-open="true"] .panel {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .state-box {
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: #fff;
+        padding: var(--s4);
+      }
+
+      .skeleton {
+        display: grid;
+        gap: var(--s2);
+      }
+
+      .sk {
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #f2f4f7 0%, #eceff4 40%, #f2f4f7 80%);
+        background-size: 200% 100%;
+        animation: shimmer 1.2s ease-in-out infinite;
+      }
+
+      .sk.w60 {
+        width: 60%;
+      }
+
+      .sk.w80 {
+        width: 80%;
+      }
+
+      .sk.w40 {
+        width: 40%;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 120% 0;
+        }
+        100% {
+          background-position: -20% 0;
+        }
+      }
+
+      .empty {
+        border: 1px dashed var(--line-strong);
+        border-radius: var(--r3);
+        padding: var(--s5);
+        background: #fbfcfe;
+      }
+
+      .empty b {
+        display: block;
+        font-size: 13px;
+        margin-bottom: var(--s2);
+      }
+
+      .empty p {
+        margin: 0 0 var(--s3);
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .alert {
+        border-radius: var(--r2);
+        padding: var(--s3);
+        font-size: 12px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: #2f3640;
+      }
+
+      .alert.err {
+        border-color: #f2d2d2;
+        background: var(--bad-soft);
+        color: #7b2a2a;
+      }
+
+      .alert.ok {
+        border-color: #cfe3d7;
+        background: #f1fbf5;
+        color: #245b39;
+      }
+
+      .alert.perm {
+        border-color: #dbe6ff;
+        background: #f5f9ff;
+        color: #1f3154;
+      }
+
+      .footer {
+        margin: var(--s7) 0 var(--s8);
+        padding-top: var(--s3);
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--s3);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      [data-in] {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: rise 0.55s ease forwards;
+      }
+
+      [data-in="2"] {
+        animation-delay: 0.08s;
+      }
+
+      [data-in="3"] {
+        animation-delay: 0.16s;
+      }
+
+      [data-in="4"] {
+        animation-delay: 0.24s;
+      }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1020px) {
+        .hero-metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .psych-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .page {
+          width: min(calc(100% - 1.2rem), var(--maxw));
+        }
+
+        .hero {
+          padding: var(--s5) var(--s4);
+        }
+
+        main section + section {
+          margin-top: var(--s6);
+        }
+
+        .hero-metrics,
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar" data-in="1">
+        <div class="brand">
+          <div class="name">RetaLab Skill</div>
+          <div class="mode">design / guide / review</div>
+        </div>
+        <a class="repo" href="https://github.com/unrealretamal/retalabskill" target="_blank" rel="noreferrer"
+          >GitHub</a
+        >
+      </header>
+
+      <main>
+        <section class="hero" data-in="1">
+          <h1>Turn UI reviews into fast, actionable interface improvements</h1>
+          <p>
+            `guide` gives you a clear set of design rules, `review` gives you a prioritized fix list. The examples below show "before/after" comparisons for the same business goal, making the differences visual: clearer primary tasks, more restrained hints, complete states, and more discoverable actions.
+          </p>
+
+          <div class="hero-row">
+            <div class="quick">
+              <h2>Quick Trigger</h2>
+              <p>Mention the Skill by name + state the page goal for the most stable output.</p>
+              <div class="prompt-grid">
+                <div class="prompt">
+                  <div class="tag"><span class="dot"></span>guide</div>
+                  <pre>Please use $retalabskill in guide mode.
+Page type: B2B settings page.
+Output: concise "do / don't" rules.</pre>
+                </div>
+                <div class="prompt">
+                  <div class="tag"><span class="dot"></span>review</div>
+                  <pre>Please use $retalabskill in review mode.
+Goal: improve first-time setup completion rate.
+Output: P0/P1/P2 + fixes + verification checklist.</pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="outcomes">
+              <h2>What You'll Get</h2>
+              <ul class="bullets">
+                <li><span class="pill">Prioritized</span><span>P0/P1/P2 layering — fix what impacts results most first.</span></li>
+                <li><span class="pill">Actionable</span><span>Recommendations map to layout/components/copy/states — directly codeable.</span></li>
+                <li><span class="pill">Verifiable</span><span>Each fix comes with verification checkpoints — no "changed but didn't improve."</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="item">Focus: tasks, states, results, risks</div>
+            <div class="item">Constraint: minimal copy + layered help text</div>
+            <div class="item">Icons: no emoji, unified icon set</div>
+            <div class="item">Output: concise bullets, avoid long paragraphs</div>
+          </div>
+        </section>
+
+        <section data-in="2">
+          <div class="section-head">
+            <h2>Core Rules (Condensed)</h2>
+            <p>Not aiming for exhaustive — just the rules that produce the most stable results: pass these 6 first, then refine visuals.</p>
+          </div>
+          <div class="demo-grid">
+            <article class="demo">
+              <div class="demo-top">
+                <div class="title">6 Rules Shared by Dev & Review</div>
+              </div>
+              <div class="demo-body">
+                <div class="table">
+                  <div class="tr"><span>1) Primary task first</span><span>Main action identifiable in 3 seconds</span></div>
+                  <div class="tr"><span>2) Layered help text</span><span>Nearest essential info first, expand on demand</span></div>
+                  <div class="tr"><span>3) State coverage</span><span>Loading/empty/error/success/permission — each shows next step</span></div>
+                  <div class="tr"><span>4) Spacing scale</span><span>4/8/12/16/24/32/40/48</span></div>
+                  <div class="tr"><span>5) Repetition & alignment</span><span>Same component type = same spacing, no drift</span></div>
+                  <div class="tr"><span>6) Minimal nesting</span><span>Containers must have a function — no decorative wrapping</span></div>
+                </div>
+                <div class="small">If a rule needs lots of exceptions, check information architecture and default values first, before adding more help text.</div>
+              </div>
+              <div class="notes"><b>Suggested order:</b> pass core rules first → design psychology diagnosis → fill in states & details (icons/motion).</div>
+            </article>
+          </div>
+        </section>
+
+        <section data-in="2">
+          <div class="section-head">
+            <h2>Example 1: Settings Form</h2>
+            <p>Same "complete initial setup" goal — the difference comes from help text layering and primary action hierarchy.</p>
+          </div>
+          <div class="demo-grid">
+            <article class="demo" data-demo="form">
+              <div class="demo-top">
+                <div class="title">UI</div>
+                <div class="seg" role="group" aria-label="Form example toggle">
+                  <button type="button" data-view="before" aria-pressed="true">Before</button>
+                  <button type="button" data-view="after" aria-pressed="false">After</button>
+                </div>
+              </div>
+              <div class="demo-body">
+                <div class="mock show" data-pane="before">
+                  <div class="mock-head"><strong>Notification Settings</strong><span class="state">Unsaved</span></div>
+                  <div class="row">
+                    <div class="label">Email</div>
+                    <div class="control">name@example.com</div>
+                    <div class="help">Please enter a valid email. Format errors will cause notification failures.</div>
+                    <div class="help">Email is used for alerts, system messages, and account security reminders.</div>
+                  </div>
+                  <div class="row">
+                    <div class="label">Send Frequency</div>
+                    <div class="control">Immediate</div>
+                    <div class="help">Immediate is recommended.</div>
+                    <div class="help">You can also choose hourly or daily digest.</div>
+                  </div>
+                  <div class="cta">
+                    <button class="btn">Back</button>
+                    <button class="btn">Save</button>
+                  </div>
+                </div>
+
+                <div class="mock hide" data-pane="after">
+                  <div class="mock-head"><strong>Notification Settings</strong><span class="state">Step 1 / 1</span></div>
+                  <div class="row">
+                    <div class="label">Email (required)</div>
+                    <div class="control">name@example.com</div>
+                    <div class="help warn">Only used for alerts and account security notifications.</div>
+                  </div>
+                  <div class="row">
+                    <div class="label">Send Frequency</div>
+                    <div class="chips">
+                      <span class="chip">Immediate</span>
+                      <span class="chip">Hourly</span>
+                      <span class="chip">Daily</span>
+                    </div>
+                  </div>
+                  <div class="cta">
+                    <button class="btn link">Cancel</button>
+                    <button class="btn primary">Save Settings</button>
+                  </div>
+                  <div class="feedback">Takes effect immediately after saving. Check delivery results in "Notification History."</div>
+                </div>
+              </div>
+              <div class="notes"><b>Visible changes:</b> Primary CTA is clearer; help text is more restrained; clear result + next step after save.</div>
+            </article>
+
+            <article class="demo" data-demo="dashboard">
+              <div class="demo-top">
+                <div class="title">Review Output (excerpt)</div>
+                <div class="seg" role="group" aria-label="Form review toggle">
+                  <button type="button" data-view="before" aria-pressed="true">For "Before"</button>
+                  <button type="button" data-view="after" aria-pressed="false">For "After"</button>
+                </div>
+              </div>
+              <div class="demo-body">
+                <div class="review-card show" data-pane="before">
+                  <div class="head">P0 / P1 / P2</div>
+                  <div class="body">
+                    <div class="prio">
+                      <div class="item">
+                        <div class="k p0"><span class="mark"></span>P0</div>
+                        <p>Primary and secondary actions have equal visual weight — users may misclick or hesitate.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p1"><span class="mark"></span>P1</div>
+                        <p>Help text is repetitive and excessive — scanning cost is high, key constraints don't stand out.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p2"><span class="mark"></span>P2</div>
+                        <p>Missing post-save result feedback — users can't tell if it took effect.</p>
+                      </div>
+                    </div>
+                    <div class="small">Fixes will address: button hierarchy, help text layering, success/error states.</div>
+                  </div>
+                </div>
+
+                <div class="review-card hide" data-pane="after">
+                  <div class="head">Verification Checkpoints</div>
+                  <div class="body">
+                    <div class="prio">
+                      <div class="item">
+                        <div class="k p0"><span class="mark"></span>Primary Action</div>
+                        <p>"Save Settings" identifiable as the main action within 3 seconds; Cancel is secondary.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p1"><span class="mark"></span>Help Text</div>
+                        <p>Only one inline hint covering key risk — no repeated explanations.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p2"><span class="mark"></span>Feedback</div>
+                        <p>After saving, result + next step entry (e.g. view notification history) both appear.</p>
+                      </div>
+                    </div>
+                    <div class="small">These checkpoints help you quickly determine whether the redesign actually improved things.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="notes"><b>Immediate value:</b> Reviews shift from "vague suggestions" to "prioritized + verifiable fixes."</div>
+            </article>
+          </div>
+        </section>
+
+        <section data-in="3">
+          <div class="section-head">
+            <h2>Example 2: Dashboard</h2>
+            <p>Same "view data" goal — the difference comes from primary/secondary hierarchy and risk visibility.</p>
+          </div>
+          <div class="demo-grid">
+            <article class="demo" data-demo="dash">
+              <div class="demo-top">
+                <div class="title">UI</div>
+                <div class="seg" role="group" aria-label="Dashboard example toggle">
+                  <button type="button" data-view="before" aria-pressed="true">Before</button>
+                  <button type="button" data-view="after" aria-pressed="false">After</button>
+                </div>
+              </div>
+              <div class="demo-body">
+                <div class="mock show" data-pane="before">
+                  <div class="mock-head"><strong>Operations Overview</strong><span class="state">Past 7 days</span></div>
+                  <div class="metrics">
+                    <div class="metric">Active Users<b>24,120</b></div>
+                    <div class="metric">New Signups<b>1,632</b></div>
+                    <div class="metric">Payment Rate<b>5.1%</b></div>
+                    <div class="metric">Churn Rate<b>3.2%</b></div>
+                    <div class="metric">Tickets<b>482</b></div>
+                    <div class="metric">Alerts<b>19</b></div>
+                  </div>
+                </div>
+
+                <div class="mock hide" data-pane="after">
+                  <div class="mock-head"><strong>Operations Overview</strong><span class="state">Past 7 days</span></div>
+                  <div class="metrics">
+                    <div class="metric primary">Core Health<b>91</b></div>
+                    <div class="metric">Active Users<b>24,120</b></div>
+                    <div class="metric">New Signups<b>1,632</b></div>
+                    <div class="metric">Payment Rate<b>5.1%</b></div>
+                    <div class="metric risk">Alerts<b>19</b></div>
+                    <div class="metric">Tickets<b>482</b></div>
+                  </div>
+                  <div class="feedback">Alerts up 34% vs last week — suggest checking "Payment Pipeline" details first.</div>
+                </div>
+              </div>
+              <div class="notes"><b>Visible changes:</b> See key status first; risk has clear entry point; next action is clearer.</div>
+            </article>
+
+            <article class="demo" data-demo="list">
+              <div class="demo-top">
+                <div class="title">Checklist Rules (guide output excerpt)</div>
+                <div class="seg" role="group" aria-label="Dashboard rules toggle">
+                  <button type="button" data-view="before" aria-pressed="true">Rules</button>
+                  <button type="button" data-view="after" aria-pressed="false">Verification</button>
+                </div>
+              </div>
+              <div class="demo-body">
+                <div class="review-card show" data-pane="before">
+                  <div class="head">Do / Don't</div>
+                  <div class="body">
+                    <div class="prio">
+                      <div class="item">
+                        <div class="k p0"><span class="mark"></span>Do</div>
+                        <p>Keep one primary metric as the visual focal point; demote other metrics as supporting info.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p1"><span class="mark"></span>Do</div>
+                        <p>Make key risks visible with a clickable next-step entry.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p2"><span class="mark"></span>Don't</div>
+                        <p>Don't let all numbers fill the first screen at equal weight — users can't identify the focus.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="review-card hide" data-pane="after">
+                  <div class="head">Verification Checkpoints</div>
+                  <div class="body">
+                    <div class="prio">
+                      <div class="item">
+                        <div class="k p0"><span class="mark"></span>3-second judgment</div>
+                        <p>User can say "is the current state healthy?" within 3 seconds.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p1"><span class="mark"></span>Risk entry</div>
+                        <p>Alerts/anomalies have a clear entry — clicking reveals cause + resolution path.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p2"><span class="mark"></span>Stable hierarchy</div>
+                        <p>Same metric type looks consistent across pages — no random style drift.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="notes"><b>Immediate value:</b> The same set of rules can be reused across multiple dashboard pages — no "one set per page."</div>
+            </article>
+          </div>
+        </section>
+
+        <section data-in="4">
+          <div class="section-head">
+            <h2>Example 3: List Page</h2>
+            <p>Same "open a project" goal — the difference comes from action discoverability and consistent entry points.</p>
+          </div>
+          <div class="demo-grid">
+            <article class="demo" data-demo="table">
+              <div class="demo-top">
+                <div class="title">UI</div>
+                <div class="seg" role="group" aria-label="List page example toggle">
+                  <button type="button" data-view="before" aria-pressed="true">Before</button>
+                  <button type="button" data-view="after" aria-pressed="false">After</button>
+                </div>
+              </div>
+              <div class="demo-body">
+                <div class="mock show" data-pane="before">
+                  <div class="mock-head"><strong>Project List</strong><span class="state">32 projects</span></div>
+                  <div class="table">
+                    <div class="tr"><span>Payment Pipeline Monitor</span><span>...</span></div>
+                    <div class="tr"><span>Growth Experiment Dashboard</span><span>...</span></div>
+                    <div class="tr"><span>Auto Customer Assignment</span><span>...</span></div>
+                  </div>
+                </div>
+
+                <div class="mock hide" data-pane="after">
+                  <div class="mock-head"><strong>Project List</strong><span class="state">32 projects</span></div>
+                  <div class="table">
+                    <div class="tr"><span>Payment Pipeline Monitor</span><span><button class="btn">View</button></span></div>
+                    <div class="tr"><span>Growth Experiment Dashboard</span><span><button class="btn">View</button></span></div>
+                    <div class="tr"><span>Auto Customer Assignment</span><span><button class="btn">View</button></span></div>
+                  </div>
+                  <div class="chips">
+                    <span class="chip">Batch Edit</span>
+                    <span class="chip">Export Report</span>
+                    <span class="chip">More Actions</span>
+                  </div>
+                </div>
+              </div>
+              <div class="notes"><b>Visible changes:</b> Primary action is explicit; long-tail actions deferred; list behavior consistent.</div>
+            </article>
+
+            <article class="demo">
+              <div class="demo-top">
+                <div class="title">Trigger Example</div>
+                <div class="seg" role="group" aria-label="Trigger example toggle">
+                  <button type="button" data-view="before" aria-pressed="true">Prompt</button>
+                  <button type="button" data-view="after" aria-pressed="false">Output Excerpt</button>
+                </div>
+              </div>
+              <div class="demo-body">
+                <div class="review-card show" data-pane="before">
+                  <div class="head">Prompt</div>
+                  <div class="body">
+                    <pre>Please use $retalabskill in review mode.
+Page: Project list (list-detail).
+Goal: reduce misclicks, improve "View Project" discoverability.
+Output: P0/P1/P2 + fixes + verification checklist.</pre>
+                  </div>
+                </div>
+                <div class="review-card hide" data-pane="after">
+                  <div class="head">Output Excerpt</div>
+                  <div class="body">
+                    <div class="prio">
+                      <div class="item">
+                        <div class="k p0"><span class="mark"></span>P0</div>
+                        <p>Primary action hidden behind "..." — users don't know what they can do.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p1"><span class="mark"></span>P1</div>
+                        <p>List lacks consistent entry point — row click behavior inconsistent with inline actions.</p>
+                      </div>
+                      <div class="item">
+                        <div class="k p2"><span class="mark"></span>P2</div>
+                        <p>Long-tail actions should defer to "More Actions" to reduce first-screen noise.</p>
+                      </div>
+                    </div>
+                    <div class="small">Fixes will address: button/link discoverability, row interaction consistency, long-tail action containment.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="notes"><b>Immediate value:</b> The same issue gets stably decomposed into priority + actionable fixes.</div>
+            </article>
+          </div>
+        </section>
+
+        <section data-in="4">
+          <div class="section-head">
+            <h2>Design Psychology (How It Maps to Interface Details)</h2>
+            <p>Turn abstract concepts into checkable interface signals: what you can do, how to do it, what happened after, how to recover from errors.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="card">
+              <div class="head">Visual Annotations (toggle switches to see changes)</div>
+              <div class="body">
+                <div class="psych-grid">
+                  <div class="toolbox" aria-label="Design psychology toggles">
+                    <p class="group-title">Design Tools</p>
+                    <div class="toggle-list">
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="affordance" checked />
+                        <div>
+                          <b>Affordance</b>
+                          <span>Users can tell at a glance "what can I do here."</span>
+                        </div>
+                      </label>
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="signifiers" checked />
+                        <div>
+                          <b>Signifiers</b>
+                          <span>Users can tell "how to do it" (buttons, labels, clickability).</span>
+                        </div>
+                      </label>
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="constraints" checked />
+                        <div>
+                          <b>Constraints (Error Prevention)</b>
+                          <span>Use defaults/constraints/inline hints to reduce errors.</span>
+                        </div>
+                      </label>
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="feedback" checked />
+                        <div>
+                          <b>Feedback (Closure)</b>
+                          <span>After an action, clearly show result, change, and next step.</span>
+                        </div>
+                      </label>
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="mapping" />
+                        <div>
+                          <b>Mapping</b>
+                          <span>Control position maps naturally to what it controls.</span>
+                        </div>
+                      </label>
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="knowledge" />
+                        <div>
+                          <b>Knowledge in the World</b>
+                          <span>Show key constraints at the decision point — don't make users remember.</span>
+                        </div>
+                      </label>
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="modes" />
+                        <div>
+                          <b>Modes</b>
+                          <span>Same action yields different results in different states — needs strong cues.</span>
+                        </div>
+                      </label>
+                    </div>
+
+                    <p class="group-title sub">Diagnostic Labels</p>
+                    <div class="toggle-list">
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="exec" />
+                        <div>
+                          <b>Gulf of Execution</b>
+                          <span>User doesn't know "how to start / what to click."</span>
+                        </div>
+                      </label>
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="eval" />
+                        <div>
+                          <b>Gulf of Evaluation</b>
+                          <span>User doesn't know "what happened / did it work."</span>
+                        </div>
+                      </label>
+                      <label class="toggle">
+                        <input type="checkbox" data-anno="model" />
+                        <div>
+                          <b>Conceptual Model</b>
+                          <span>Consistent naming helps users form the right mental model.</span>
+                        </div>
+                      </label>
+                    </div>
+
+                    <div class="inline-actions">
+                      <button class="btn" type="button" id="annoAll">Select All</button>
+                      <button class="btn" type="button" id="annoNone">Clear</button>
+                    </div>
+                  </div>
+
+                  <div class="stage">
+                    <div class="mock mock-reset annotated anno-affordance anno-signifiers anno-constraints anno-feedback" style="border:0;padding:0;">
+                      <div class="mock-head">
+                        <strong>Notification Settings</strong>
+                        <span class="state">Step 1 / 1</span>
+                      </div>
+                      <div class="row">
+                        <div class="label">Email (required)</div>
+                        <div class="control a-cta a-signifier a-constraint" data-anno="affordance">name@example.com</div>
+                        <div class="help warn a-constraint a-knowledge" data-anno="constraints">Only used for alerts and account security notifications.</div>
+                      </div>
+                      <div class="row">
+                        <div class="label">Send Frequency</div>
+                        <div class="chips">
+                          <span class="chip a-cta a-signifier" data-anno="affordance">Immediate</span>
+                          <span class="chip a-cta a-signifier" data-anno="affordance">Hourly</span>
+                          <span class="chip a-cta a-signifier" data-anno="affordance">Daily</span>
+                        </div>
+                      </div>
+                      <div class="cta">
+                        <button class="btn link a-signifier" data-anno="signifiers">Cancel</button>
+                        <button class="btn primary a-cta a-signifier" data-anno="affordance">Save Settings</button>
+                      </div>
+                      <div class="feedback a-feedback" data-anno="feedback">Takes effect immediately after saving.</div>
+                    </div>
+
+                    <div class="pin" data-anno="affordance" style="--x:52;--y:42;"><span class="label"><i>Affordance:</i> input field, chips, button — all clearly actionable</span></div>
+                    <div class="pin" data-anno="signifiers" style="--x:22;--y:65;"><span class="label"><i>Signifiers:</i> label "Email (required)", button text, chip labels</span></div>
+                    <div class="pin" data-anno="constraints" style="--x:48;--y:58;"><span class="label"><i>Constraints:</i> required field marked, help text shows usage boundary</span></div>
+                    <div class="pin" data-anno="feedback" style="--x:38;--y:82;"><span class="label"><i>Feedback:</i> success message confirms result + next step</span></div>
+                    <div class="pin" data-anno="mapping" style="--x:70;--y:30;"><span class="label"><i>Mapping:</i> frequency chips naturally sit below the label</span></div>
+                    <div class="pin" data-anno="knowledge" style="--x:68;--y:55;"><span class="label"><i>Knowledge in the World:</i> usage constraint shown inline, no need to memorize</span></div>
+                    <div class="pin" data-anno="modes" style="--x:92;--y:18;"><span class="label"><i>Modes:</i> "Step 1/1" makes it clear this is a single-step form</span></div>
+                    <div class="pin" data-anno="exec" style="--x:12;--y:52;"><span class="label"><i>Gulf of Execution:</i> primary button labeled "Save Settings" — user knows what to press</span></div>
+                    <div class="pin" data-anno="eval" style="--x:35;--y:90;"><span class="label"><i>Gulf of Evaluation:</i> success message closes the loop — "did it work?" answered</span></div>
+                    <div class="pin" data-anno="model" style="--x:52;--y:10;"><span class="label"><i>Conceptual Model:</i> consistent naming across form</span></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section data-in="4">
+          <div class="section-head">
+            <h2>Micro-Interaction & Error Patterns</h2>
+            <p>Slips vs mistakes: different causes demand different fixes.</p>
+          </div>
+          <div class="micro-grid">
+            <article class="micro">
+              <div class="k slip"><span class="mark"></span>Slip</div>
+              <p>User knows what to do but accidentally does something else — e.g. clicks wrong chip, deletes wrong item.</p>
+              <p><b>Fix:</b> undo, confirmation for destructive actions, adequate tap targets, clear visual distinction between similar items.</p>
+              <div class="toast">Undo available for 5 seconds</div>
+            </article>
+            <article class="micro">
+              <div class="k mistake"><span class="mark"></span>Mistake</div>
+              <p>User forms wrong goal or wrong plan — e.g. picks "hourly" when "daily" was the right choice, enters email in the wrong field.</p>
+              <p><b>Fix:</b> constraints, smart defaults, preview before confirm, clear labels with examples.</p>
+              <div class="danger">This action will delete all data. Type "DELETE" to confirm.</div>
+            </article>
+          </div>
+        </section>
+
+        <section data-in="4">
+          <div class="section-head">
+            <h2>Icon & Motion Guidelines</h2>
+            <p>Icons for communication, not decoration. Motion for orientation, not distraction.</p>
+          </div>
+          <div class="icon-row">
+            <article class="demo">
+              <div class="demo-top"><div class="title">Icon Rules</div></div>
+              <div class="demo-body">
+                <div class="icon-bar">
+                  <button class="icon-btn"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Add</span></button>
+                  <button class="icon-btn"><svg class="ico" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg><span>Save</span></button>
+                  <button class="icon-btn icon-only"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg><span>History</span></button>
+                </div>
+                <div class="small mt-s2">Icons paired with labels unless universally recognized. Icon set consistent within project.</div>
+              </div>
+            </article>
+            <article class="demo">
+              <div class="demo-top"><div class="title">Motion Demo</div></div>
+              <div class="demo-body">
+                <div class="motion-demo">
+                  <div class="motion-head">
+                    <div class="motion-title">Panel Transition</div>
+                    <div class="mode-toggle" role="group" aria-label="Motion toggle">
+                      <button type="button" aria-pressed="true">Open</button>
+                    </div>
+                  </div>
+                  <div class="motion-stage" data-open="true">
+                    <div class="overlay"></div>
+                    <div class="mock mock-reset" style="border:0;padding:0;">
+                      <div class="mock-head"><strong>Dashboard</strong></div>
+                      <div class="metrics">
+                        <div class="metric">Users<b>1.2k</b></div>
+                        <div class="metric">Revenue<b>$4.8k</b></div>
+                      </div>
+                    </div>
+                    <div class="panel">
+                      <h3>Details</h3>
+                      <p>Panel slides in from right with a subtle overlay. Duration: 220ms, ease-out.</p>
+                      <div class="panel-actions">
+                        <button class="btn primary">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section data-in="4">
+          <div class="section-head">
+            <h2>State Coverage</h2>
+            <p>Every interactive surface must define all five states. Missing any is a real bug, not polish.</p>
+          </div>
+          <div class="demo-grid">
+            <article class="demo">
+              <div class="demo-body">
+                <div class="state-box">
+                  <div class="skeleton">
+                    <div class="sk"></div><div class="sk w80"></div><div class="sk w60"></div><div class="sk w40"></div>
+                  </div>
+                  <div class="small mt-s2"><b>Loading:</b> skeleton or spinner, maintain layout stability.</div>
+                </div>
+                <div class="state-box">
+                  <div class="empty">
+                    <b>No projects yet</b>
+                    <p>Create your first project to start monitoring payment pipelines.</p>
+                    <button class="btn primary">Create Project</button>
+                  </div>
+                  <div class="small mt-s2"><b>Empty:</b> explain what goes here + one clear CTA to populate it.</div>
+                </div>
+                <div class="state-box">
+                  <div class="alert err">
+                    <b>Failed to load projects.</b> The server returned a 500 error.
+                    <div style="margin-top:var(--s2)"><button class="btn">Retry</button></div>
+                  </div>
+                  <div class="small mt-s2"><b>Error:</b> say what happened + how to fix (or at least Retry).</div>
+                </div>
+                <div class="state-box">
+                  <div class="table">
+                    <div class="tr"><span>Payment Pipeline Monitor</span><span><button class="btn">View</button></span></div>
+                    <div class="tr"><span>Growth Experiment Dashboard</span><span><button class="btn">View</button></span></div>
+                  </div>
+                  <div class="small mt-s2"><b>Success:</b> data loads clean, primary action visible.</div>
+                </div>
+                <div class="state-box">
+                  <div class="alert perm">
+                    <b>Read-only access.</b> You don't have permission to edit these settings. Contact your admin to request access.
+                  </div>
+                  <div class="small mt-s2"><b>Permission:</b> explain the limitation + how to get access.</div>
+                </div>
+              </div>
+              <div class="notes"><b>Rule:</b> don't ship a surface until all five states are accounted for — even if the "empty" state seems unlikely on day one.</div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>RetaLab Skill — Style-neutral UI/UX consultation</span>
+        <span>Adapted from <a href="https://github.com/oil-oil/ui-ux-guide" target="_blank" rel="noreferrer">oil-oil/ui-ux-guide</a></span>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        const demos = document.querySelectorAll("[data-demo]");
+        demos.forEach(function (demo) {
+          demo.addEventListener("click", function (e) {
+            const btn = e.target.closest("button[data-view]");
+            if (!btn) return;
+            const view = btn.getAttribute("data-view");
+            const seg = btn.closest(".seg");
+            if (!seg) return;
+            seg.querySelectorAll("button[data-view]").forEach(function (b) {
+              b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+            });
+            const body = demo.querySelector(".demo-body");
+            if (!body) return;
+            body.querySelectorAll("[data-pane]").forEach(function (pane) {
+              if (pane.getAttribute("data-pane") === view) {
+                pane.classList.remove("hide");
+                pane.classList.add("show");
+              } else {
+                pane.classList.remove("show");
+                pane.classList.add("hide");
+              }
+            });
+          });
+        });
+
+        const toggles = document.querySelectorAll("input[data-anno]");
+        const stage = document.querySelector(".annotated");
+
+        function updateAnnos() {
+          if (!stage) return;
+          const classes = stage.classList;
+          classes.remove(
+            "anno-affordance",
+            "anno-signifiers",
+            "anno-mapping",
+            "anno-constraints",
+            "anno-feedback",
+            "anno-exec",
+            "anno-eval",
+            "anno-model",
+            "anno-knowledge",
+            "anno-modes"
+          );
+          toggles.forEach(function (cb) {
+            if (cb.checked) {
+              classes.add("anno-" + cb.getAttribute("data-anno"));
+            }
+          });
+        }
+
+        toggles.forEach(function (cb) {
+          cb.addEventListener("change", updateAnnos);
+        });
+
+        const allBtn = document.getElementById("annoAll");
+        const noneBtn = document.getElementById("annoNone");
+        if (allBtn) {
+          allBtn.addEventListener("click", function () {
+            toggles.forEach(function (cb) {
+              cb.checked = true;
+            });
+            updateAnnos();
+          });
+        }
+        if (noneBtn) {
+          noneBtn.addEventListener("click", function () {
+            toggles.forEach(function (cb) {
+              cb.checked = false;
+            });
+            updateAnnos();
+          });
+        }
+
+        updateAnnos();
+      })();
+    </script>
+  </body>
+</html>
