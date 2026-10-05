@@ -3,7 +3,7 @@
 > Define design systems, review interfaces, and turn UX principles into implementation-ready fixes—without imposing one visual style.
 
 <p align="center">
-  <img src="./assets/readme/hero.png" width="100%" alt="RetaLab Skill: layered interface-design artifacts illustrating a neutral design system, interface review, and resolved UX states." />
+  <img src="./assets/readme/hero.svg" width="100%" alt="RetaLab Skill: style-neutral design guidance, with an illustrated design canvas and prioritized UX review." />
 </p>
 
 **RetaLab Skill** helps coding agents and product teams make better interface decisions. It reads the project first, listens for product and brand constraints, then helps shape a design system or improve a specific interface.
