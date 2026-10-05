@@ -1,0 +1,5 @@
+Model: bytedance/seedream-5.0-lite
+Generation: Superdesign image generation, 2K square still life; 6 credits.
+
+Prompt:
+A premium editorial product-native art object for RetaLab Skill, a style-neutral UI/UX consultation toolkit. Create one isolated sculptural arrangement of layered translucent acrylic interface panels and tactile paper design tokens, connected by a precise threadlike indigo route; one panel has a subtle red critique mark and a green resolved-state marker as small visual accents. No legible text, no letters, no numbers, no logos, no UI screenshot, no watermark. Front three-quarter view, asymmetric composition with the object weighted to the right and generous empty space to the left, crisp studio lighting, restrained monochrome graphite/ivory with indigo #6366f1, high quality realistic 3D editorial still life, subject cutout on perfectly flat chroma green #00ff00, no floor, no cast shadow, no gradient, no texture in background. This should explain interface design and review, not generic AI or SaaS.
